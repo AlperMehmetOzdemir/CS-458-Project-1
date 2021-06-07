@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bilkent Accounts :: Login</title>
+  </head>
+  <body>
+    <nav>Bilkent University Online Services</nav>
+    <header>
+      <div class="logo">
+        <img src="./bilkent-logo.jpg" alt="Bilkent Logo" />
+      </div>
+      <div class="header__content">
+        <h1 class="header__title">Bilkent University</h1>
+        <h2 class="header__subtitle">Secure Login Gateway</h2>
+      </div>
+    </header>
+    <section id="login" class="login">
+      <div class="login__title">
+        Login: <strong>SRS</strong> - Student Academic Information Registration
+        System
+      </div>
+      <div class="login__content">
+        <form class="login__form">
+          <div class="input__group">
+            <label for="bilkent_id">Bilkent ID</label>
+            <input id="bilkent_id" type="text" />
+          </div>
+          <div class="input__group">
+            <label for="password">Password</label>
+            <input id="password" type="password" />
+          </div>
+          <button>Login</button>
+        </form>
+        <div class="login__tooltip_container">
+          <div class="login__tooltip">
+            If you are having problems logging in, please check the time zone
+            setting on your computer. Turkey no longer uses daylight saving time
+            (DST). Your computer time zone setting should be set as
+            <strong>UTC+3</strong>.
+          </div>
+          <div class="login__tooltip">
+            Bilkent Computer Center uses this common login gateway page for user
+            authenticaton. Most Bilkent University online services are accessed
+            through this Secure Login Gateway. If you don't know your STARS or
+            BAIS password, please click here.
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>&copy; 2021 Summer for CS-458 Project 1</footer>
+  </body>
+</html>
