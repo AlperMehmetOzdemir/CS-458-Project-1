@@ -16,13 +16,37 @@ strong {
   font-size: 1em;
 }
 
-nav {
+.nav {
   color: #fff;
   background-color: #036;
   padding: 0.75rem 1.25rem;
   border-radius: 0.125rem;
   font-size: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.nav__linkContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__link {
+  color: white;
+  margin-left: 0.75rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+.nav__link a, .nav__link a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 
 header {
   width: 100%;
