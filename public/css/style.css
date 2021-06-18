@@ -19,7 +19,7 @@ strong {
 .nav {
   color: #fff;
   background-color: #036;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 0.125rem;
   font-size: 1.25rem;
   display: flex;
@@ -37,9 +37,16 @@ strong {
 
 .nav__link {
   color: white;
+  padding: 0.5rem 0.9375rem; 
   margin-left: 0.75rem;
   list-style: none;
   text-decoration: none;
+}
+
+.nav__linkContainer > .nav__link.active {
+  background-color: #001f3e !important;
+  background: none;
+  border-radius: 3px;
 }
 
 .nav__link a, .nav__link a:visited {

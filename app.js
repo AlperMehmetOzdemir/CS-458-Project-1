@@ -27,7 +27,7 @@ const users = [
 
 // Index page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {active: "login"});
 });
 
 // Login request
@@ -39,7 +39,7 @@ app.post("/", (req,res) => {
 })
 
 app.get("/reset-password", (req,res) => {
-  res.render("reset_password");
+  res.render("reset_password", {active: "reset"});
 })
 
 const PORT = process.env.PORT || 5000;

@@ -3,10 +3,10 @@
     Bilkent University Online Services
   </div>
   <ul class="nav__linkContainer">
-    <li class="nav__link">
+    <li class="nav__link <%= active=="reset" ? 'active' : '' %>"> 
       <a href="/reset-password">Reset Password</a>
     </li>
-    <li class="nav__link">
+    <li class="nav__link <%= active=="login" ? 'active' : '' %>"> 
       <a href="/">Login</a>
     </li>
   </ul>
