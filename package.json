@@ -2,11 +2,11 @@
   "name": "cs-458-project-1",
   "version": "1.0.0",
   "description": "Shared code repository for CS-458 Project 1",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-validator": "^6.12.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
