@@ -166,6 +166,16 @@ header {
   border-radius: 0.125rem;
 }
 
+.login__tooltip > a {
+  color: #014082;
+  text-decoration: none;
+  font-size: 0.8125rem;
+}
+.login__tooltip > a:hover {
+  text-decoration: underline;
+  color: #005580;
+}
+
 .resetPassword__title {
   font-size: 1.3125rem;
   color: #333;

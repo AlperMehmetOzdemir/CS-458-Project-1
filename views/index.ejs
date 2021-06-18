@@ -3,10 +3,7 @@
   <%- include("./partials/head.ejs") %>
 
   <body>
-   
-    <%- include("./partials/nav.ejs") %>
-
-    <%- include("./partials/header.ejs") %>
+    <%- include("./partials/nav.ejs") %> <%- include("./partials/header.ejs") %>
 
     <section id="login" class="login">
       <div class="login__title">
@@ -35,8 +32,9 @@
           <div class="login__tooltip">
             Bilkent Computer Center uses this common login gateway page for user
             authenticaton. Most Bilkent University online services are accessed
-            through this Secure Login Gateway. If you don't know your STARS or
-            BAIS password, please click here.
+            through this Secure Login Gateway.
+            <br />
+            <a href="/reset-password">If you don't know your STARS or BAIS password, please click here.</a>
           </div>
         </div>
       </div>
