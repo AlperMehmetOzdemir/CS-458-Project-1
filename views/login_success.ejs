@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+   
+    <%- include("./partials/nav.ejs") %>
+
+    <%- include("./partials/header.ejs") %>
+
+    <section id="loginSuccess" class="loginSuccess">
+      <div class="loginSuccess__title">
+        Login Success
+      </div>
+      <div class="loginSuccess__content">
+        Welcome back, number <%= id %>
+      </div>
+    </section>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
