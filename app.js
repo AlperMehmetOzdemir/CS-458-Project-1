@@ -1,10 +1,15 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
 const app = express();
+
+app.use(cookieParser());
+app.use(session({ secret: "Th3y Wi11 N3v3r Gue55 Thi5!" }));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -24,6 +29,8 @@ const users = [
     password: "admin27",
   },
 ];
+const captchaError = { param: "captcha", msg: null };
+const LOGIN_ATTEMPTS_FOR_CAPTCHA = 3;
 
 // Index page
 app.get("/", (req, res) => {
@@ -44,9 +51,14 @@ app.post(
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      const errorsArray = errors.array();
+      if (passedInvalidLoginAttemptsForSession(req)) {
+        errorsArray.push(captchaError);
+      }
+
       return res
         .status(400)
-        .render("index", { active: "login", errors: errors.array() });
+        .render("index", { active: "login", errors: errorsArray });
     }
 
     let user = { id: req.body.bilkent_id, password: req.body.password };
@@ -57,17 +69,18 @@ app.post(
         .status(200)
         .render("login_success", { id: user.id, active: null });
     } else {
-      return res
-        .status(401)
-        .render("index", {
-          active: "login",
-          errors: [
-            {
-              param: "password",
-              msg: "Wrong password or Bilkent ID number.",
-            },
-          ],
-        });
+      const errorsArray = [
+        { param: "password", msg: "Wrong password or Bilkent ID number." },
+      ];
+
+      if (passedInvalidLoginAttemptsForSession(req)) {
+        errorsArray.push(captchaError);
+      }
+
+      return res.status(401).render("index", {
+        active: "login",
+        errors: errorsArray,
+      });
     }
   }
 );
@@ -97,5 +110,20 @@ function isUserRegistered(userToBeChecked) {
     }
   } catch (error) {
     throw new Error("[User] is not well defined");
+  }
+}
+
+function passedInvalidLoginAttemptsForSession(request) {
+  if (request.session.login_attempts) {
+    request.session.login_attempts++;
+    console.log(request.session.login_attempts)
+    if (request.session.login_attempts >= LOGIN_ATTEMPTS_FOR_CAPTCHA) {
+      return true;
+    }
+  } else {
+    request.session.login_attempts = 1;
+    console.log(request.session.login_attempts)
+
+    return false;
   }
 }
