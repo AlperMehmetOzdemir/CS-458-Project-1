@@ -10,3 +10,10 @@ Start on you own device using the following commands:
 npm install
 node app.js
 ```
+
+
+Accepted users:
+
+- ID: "12345", Password: "pass12345"
+- ID: "20212021", Password: "pass2021"
+- ID: "27", Password: "admin27"
