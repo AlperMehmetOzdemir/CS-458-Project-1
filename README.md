@@ -1,5 +1,7 @@
-# CS-458-Project-1
+# CS-458-Project-1 Test Automation with Selenium
 Shared code repository for CS-458 Project 1
+
+![Login page screenshot](website_screenshot.png)
 
 The website can be found live [here](https://srs-login-page.herokuapp.com/)
 
