@@ -1,6 +1,6 @@
 const express = require("express");
+const { body, validationResult } = require("express-validator");
 const dotenv = require("dotenv");
-const ejs = "ejs";
 
 dotenv.config();
 
@@ -27,21 +27,50 @@ const users = [
 
 // Index page
 app.get("/", (req, res) => {
-  res.render("index", { active: "login" });
+  res.render("index", { active: "login", errors: [] });
 });
 
 // Login request
-app.post("/", (req, res) => {
-  let user = { id: req.body.bilkent_id, password: req.body.password };
+app.post(
+  "/",
+  body("bilkent_id").not().isEmpty().withMessage("Bilkent ID cannot be blank"),
+  body("bilkent_id")
+    .trim()
+    .isInt()
+    .withMessage("Bilkent ID must be an integer"),
+  body("password")
+    .isLength({ min: 6 })
+    .withMessage("Password is too short (minimum is 6 characters)"),
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .render("index", { active: "login", errors: errors.array() });
+    }
 
-  console.log(user);
+    let user = { id: req.body.bilkent_id, password: req.body.password };
+    console.log(user);
 
-  if (isUserRegistered(user)) {
-    res.status(200).render("login_success", { id: user.id, active: null });
-  } else {
-    res.status(401).send("You shall not pass");
+    if (isUserRegistered(user)) {
+      return res
+        .status(200)
+        .render("login_success", { id: user.id, active: null });
+    } else {
+      return res
+        .status(401)
+        .render("index", {
+          active: "login",
+          errors: [
+            {
+              param: "password",
+              msg: "Wrong password or Bilkent ID number.",
+            },
+          ],
+        });
+    }
   }
-});
+);
 
 app.get("/reset-password", (req, res) => {
   res.render("reset_password", { active: "reset" });

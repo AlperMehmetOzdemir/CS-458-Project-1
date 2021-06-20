@@ -6,29 +6,46 @@
     <%- include("./partials/nav.ejs") %> <%- include("./partials/header.ejs") %>
 
     <section id="login" class="login">
+
       <div class="login__title">
         Login: <strong>SRS</strong> - Student Academic Information Registration
         System
       </div>
+
       <div class="login__content">
+
         <form class="login__form" action="/" method="POST">
           <div class="input__group">
             <label for="bilkent_id">Bilkent ID</label>
             <input id="bilkent_id" name="bilkent_id" type="text" />
+            <% errors.forEach(error => { %>
+              <% if (error.param == "bilkent_id"){ %>
+                <p class="error_msg"> <%= error.msg %>  </p>
+                <% } %>  
+            <%}); %> 
           </div>
+          
           <div class="input__group">
             <label for="password">Password</label>
             <input id="password" name="password" type="password" />
+            <% errors.forEach(error => { %>
+              <% if (error.param == "password"){ %>
+                <p class="error_msg"> <%= error.msg %>  </p>
+                <% } %>  
+            <%}); %> 
           </div>
           <button>Login</button>
         </form>
+
         <div class="login__tooltip_container">
+          
           <div class="login__tooltip">
             If you are having problems logging in, please check the time zone
             setting on your computer. Turkey no longer uses daylight saving time
             (DST). Your computer time zone setting should be set as
             <strong>UTC+3</strong>.
           </div>
+
           <div class="login__tooltip">
             Bilkent Computer Center uses this common login gateway page for user
             authenticaton. Most Bilkent University online services are accessed
@@ -36,6 +53,7 @@
             <br />
             <a href="/reset-password">If you don't know your STARS or BAIS password, please click here.</a>
           </div>
+
         </div>
       </div>
     </section>
