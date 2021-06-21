@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 
 public class SeleniumPlain {
 
@@ -18,32 +20,47 @@ public class SeleniumPlain {
          User[] usersWithInvalidCredentials = createUsersWithInvalidCredentials();
 
          System.setProperty("webdriver.chrome.driver", "D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/chromedriver.exe");
+         System.setProperty("webdriver.gecko.driver", "D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/geckodriver.exe");
+         System.setProperty("webdriver.opera.driver","D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/operadriver.exe");
 
-         WebDriver chromeDriver = new ChromeDriver();
 
-         chromeDriver.manage().window().maximize();
+         System.out.println("[TC-3] Browser Support Test starting");
+         browserSupportTest(LOCAL_URL, registeredUsers);
 
-        chromeDriver.get(LOCAL_URL);
+     }
 
-         System.out.println(chromeDriver.getTitle());
+     public static void browserSupportTest(String url, User[] registeredUsers){
+         System.out.println("[TC-3] Initializing drivers");
 
-         WebElement id_input = chromeDriver.findElement(By.cssSelector("input[name='bilkent_id']"));
-         WebElement password_input = chromeDriver.findElement(By.cssSelector("input[name='password']"));
-         WebElement login_button = chromeDriver.findElement(By.cssSelector("button"));
+         WebDriver[] webDrivers = new WebDriver[3];
+         webDrivers[0] = new ChromeDriver();
+         webDrivers[1] = new FirefoxDriver();
+         webDrivers[2] = new OperaDriver();
 
-         for (User user: registeredUsers) {
-             id_input.sendKeys(user.getBilkentId());
-             password_input.sendKeys(user.getPassword());
-             login_button.click();
 
-             Assertions.assertTrue(chromeDriver.findElement(By.cssSelector("section#loginSuccess")).isDisplayed(), String.format("Could not access login success page for %s", user.getBilkentId()));
+         for (WebDriver driver: webDrivers )
+         {
+             for (User user: registeredUsers) {
+                 driver.get(url);
 
-             chromeDriver.get("http://localhost:5000");
+                 // gather form elements
+                 WebElement id_input = driver.findElement(By.cssSelector("#bilkent_id"));
+                 WebElement password_input = driver.findElement(By.cssSelector("#password"));
+                 WebElement login_button = driver.findElement(By.cssSelector("button"));
+
+                 // fill out form with the registeredUser's info
+                 id_input.sendKeys(user.getBilkentId());
+                 password_input.sendKeys(user.getPassword());
+                 login_button.click();
+
+                 // check if we have arrived on the login success page
+                 Assertions.assertTrue(driver.findElement(By.cssSelector("#loginSuccess")).isDisplayed(),
+                         String.format("Could not access login success page for %s", user.getBilkentId()));
+             }
+
          }
 
-
-
-
+         System.out.println("[TC-3] Tests finished");
      }
 
     public static User[] createRegisteredUsers(){

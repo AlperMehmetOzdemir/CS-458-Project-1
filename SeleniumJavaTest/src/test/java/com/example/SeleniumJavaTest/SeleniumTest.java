@@ -29,8 +29,8 @@ public class SeleniumTest {
 
 
         System.setProperty("webdriver.chrome.whitelistedIps", "");
-//        System.setProperty("webdriver.gecko.driver", "D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/geckodriver.exe");
-//        System.setProperty("webdriver.opera.driver","D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/operadriver.exe");
+        System.setProperty("webdriver.gecko.driver", "D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/geckodriver.exe");
+        System.setProperty("webdriver.opera.driver","D:/School/Summer 2021 CS-458/Projects/CS-458-Project-1/SeleniumJavaTest/operadriver.exe");
     }
 
     @BeforeEach
@@ -59,11 +59,8 @@ public class SeleniumTest {
     @Test
     @DisplayName("TC-2 Check browser support")
     public void browserSupportTest() {
-//        for (WebDriver driver: webDrivers )
-//        {
-            WebDriver driver = new ChromeDriver();
-
-
+        for (WebDriver driver: webDrivers )
+        {
             driver.manage().window().maximize();
 
         driver.get("localhost:5000");
@@ -84,7 +81,7 @@ public class SeleniumTest {
                 driver.get("http://localhost:5000");
             }
 
-//        }
+        }
     }
 
     @Test
