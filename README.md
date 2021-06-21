@@ -19,3 +19,11 @@ Accepted users:
 - ID: "12345", Password: "pass12345"
 - ID: "20212021", Password: "pass2021"
 - ID: "27", Password: "admin27"
+
+The tests are located in the SeleniumJavaTest folder which is an intellij Java project folder.
+
+Our tests reside in SeleniumPlain.java and we used User.java to hold user information.
+
+You can specifiy the URL to use with the first parameter of the test functions.
+
+To execute the test you must download the web drivers for Chrome, Firefox and Opera as well as their corresponding browsers.
