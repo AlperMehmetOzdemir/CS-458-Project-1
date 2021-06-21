@@ -20,6 +20,14 @@ strong {
   display: none !important;
 }
 
+.unselectable {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .nav {
   color: #fff;
   background-color: #036;
@@ -143,7 +151,6 @@ header {
   /* margin-left: 4.625rem !important; */
   display: flex;
   flex-direction: row;
-
 }
 
 .captcha__container {

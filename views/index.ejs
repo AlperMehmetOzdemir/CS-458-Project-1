@@ -24,7 +24,9 @@
 
           <div class="input__group">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" required />
+            <input id="password" name="password" type="password" class="unselectable" required onselectstart="return false" 
+                  onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" 
+                  onDrop="return false"  />
             <% errors.forEach(error => { %> <% if (error.param == "password"){
             %>
             <p class="error_msg"><%= error.msg %></p>
