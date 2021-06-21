@@ -32,14 +32,14 @@ public class SeleniumPlain {
         System.out.println("[TC-1] Input Validation Test Starting");
         inputValidationTest(WEB_URL, registeredUsers,unregisteredUsersWithValidCredentials,usersWithInvalidCredentials);
 
-//        System.out.println("[TC-2] Browser Support Test Starting");
-//        browserSupportTest(WEB_URL, registeredUsers);
-//
-//        System.out.println("[TC-3] Multiple Failed Login Attempts Test Starting");
-//        multipleFailureCaptchaTest(WEB_URL, unregisteredUsersWithValidCredentials, LOGIN_ATTEMPTS_UNTIL_CAPTCHA);
-//
-//        System.out.println("[TC-4] Page Route Test Starting");
-//        pageRoutingTest(WEB_URL,registeredUsers);
+        System.out.println("[TC-2] Browser Support Test Starting");
+        browserSupportTest(WEB_URL, registeredUsers);
+
+        System.out.println("[TC-3] Multiple Failed Login Attempts Test Starting");
+        multipleFailureCaptchaTest(WEB_URL, unregisteredUsersWithValidCredentials, LOGIN_ATTEMPTS_UNTIL_CAPTCHA);
+
+        System.out.println("[TC-4] Page Route Test Starting");
+        pageRoutingTest(WEB_URL,registeredUsers);
 
 
 
