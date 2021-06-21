@@ -2,16 +2,16 @@ package com.example.SeleniumJavaTest;
 
 public class User {
 
-    private String username;
+    private String bilkent_id;
     private String password;
 
-    public User(String username, String password){
-        this.username = username;
+    public User(String bilkent_id, String password){
+        this.bilkent_id = bilkent_id;
         this.password = password;
     }
 
     public String getUsername() {
-        return username;
+        return bilkent_id;
     }
 
     public String getPassword() {
