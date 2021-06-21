@@ -10,7 +10,7 @@ public class User {
         this.password = password;
     }
 
-    public String getUsername() {
+    public String getBilkentId() {
         return bilkent_id;
     }
 
